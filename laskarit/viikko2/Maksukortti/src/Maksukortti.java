@@ -14,6 +14,7 @@ public class Maksukortti {
     }
  
     public void syoMaukkaasti() {
+        //tässä virhe
         if (this.arvo > MAUKAS) {
             this.arvo -= MAUKAS;
         }
