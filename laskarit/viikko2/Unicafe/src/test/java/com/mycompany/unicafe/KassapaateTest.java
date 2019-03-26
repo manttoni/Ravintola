@@ -59,43 +59,31 @@ public class KassapaateTest {
     }
 
     @Test
-    public void eiRahaa() {
+    public void kortillaEiTarpeeksiRahaa() {
         boolean a = kassa.syoEdullisesti(koyha);
         boolean b = kassa.syoMaukkaasti(koyha);
         int saldo = koyha.saldo();
         assertTrue(!a && !b && saldo == 1 && kassa.edullisiaLounaitaMyyty() == 0 && kassa.maukkaitaLounaitaMyyty() == 0);
 
     }
-    
+
     @Test
-    public void kortillaOstettaessaKassassaRahaaEiMuutu(){
+    public void kortillaOstettaessaKassassaRahaaEiMuutu() {
         kassa.syoEdullisesti(rikas);
         kassa.syoMaukkaasti(rikas);
-        assertTrue(kassa.kassassaRahaa()==100000);
-    }
-    
-    @Test
-    public void kortinLataus(){
-        kassa.lataaRahaaKortille(koyha, 100);
-        kassa.lataaRahaaKortille(koyha, -1);
-        assertTrue(kassa.kassassaRahaa()==100100 && koyha.saldo()==101);
-    }
-    
-    @Test
-    public void rahatEiRiitaMaukkaaseen(){
-        assertTrue(!kassa.syoMaukkaasti(koyha));
-        
+        assertTrue(kassa.kassassaRahaa() == 100000);
     }
 
-//    korttiosto toimii sekä edullisten että maukkaiden lounaiden osalta
-//jos kortilla on tarpeeksi rahaa, veloitetaan summa kortilta ja palautetaan true
-//jos kortilla on tarpeeksi rahaa, myytyjen lounaiden määrä kasvaa
-//jos kortilla ei ole tarpeeksi rahaa, kortin rahamäärä ei muutu, myytyjen lounaiden määrä muuttumaton ja palautetaan false
-//kassassa oleva rahamäärä ei muutu kortilla ostettaessa
-//kortille rahaa ladattaessa kortin saldo muuttuu ja kassassa oleva rahamäärä kasvaa ladatulla summalla
-//    
-//    käteisosto toimii sekä edullisten että maukkaiden lounaiden osalta
-//jos maksu riittävä: kassassa oleva rahamäärä kasvaa lounaan hinnalla ja vaihtorahan suuruus on oikea
-//jos maksu on riittävä: myytyjen lounaiden määrä kasvaa
-//jos maksu ei ole riittävä: kassassa oleva rahamäärä ei muutu, kaikki rahat palautetaan vaihtorahana ja myytyjen lounaiden määrässä ei muutosta
+    @Test
+    public void kortinLataus() {
+        kassa.lataaRahaaKortille(koyha, 100);
+        kassa.lataaRahaaKortille(koyha, -1);
+        assertTrue(kassa.kassassaRahaa() == 100100 && koyha.saldo() == 101);
+    }
+
+    @Test
+    public void rahatEiRiitaMaukkaaseen() {
+        assertTrue(!kassa.syoMaukkaasti(koyha));
+
+    }
 }
