@@ -1,0 +1,2 @@
+1;ranskalaiset;2
+2;makkara;2

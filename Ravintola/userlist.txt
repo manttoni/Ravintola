@@ -1,0 +1,2 @@
+waiter;waiter;waiter
+manager;manager;manager
