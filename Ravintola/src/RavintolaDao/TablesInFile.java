@@ -34,9 +34,9 @@ public class TablesInFile {
                 String[] parts = reader.nextLine().split(";");
                 int id = Integer.parseInt(parts[0]);
                 boolean reserved;
-                if(parts[1].equals("true")){
+                if (parts[1].equals("true")) {
                     reserved = true;
-                } else{
+                } else {
                     reserved = false;
                 }
                 List<Integer> idList = new ArrayList<>();
@@ -61,10 +61,10 @@ public class TablesInFile {
             System.out.println(tables.get(i));
         }
     }
-    
-    public Table getTable(int id){
-        for(int i = 0; i < tables.size();i++){
-            if(tables.get(i).getID() == id){
+
+    public Table getTable(int id) {
+        for (int i = 0; i < tables.size(); i++) {
+            if (tables.get(i).getID() == id) {
                 return tables.get(i);
             }
         }

@@ -27,7 +27,7 @@ public class Customer {
         this.orders = new ArrayList<>();
         for (int i = 0; i < idList.size(); i++) {
             for (int j = 0; j < orderReader.getOrders().size(); j++) {
-                if(idList.get(i) == orderReader.getOrders().get(j).getID()){
+                if (idList.get(i) == orderReader.getOrders().get(j).getID()) {
                     orders.add(orderReader.getOrders().get(j));
                 }
             }
@@ -49,7 +49,7 @@ public class Customer {
         System.out.print("Orders: " + this.orders.size());
         for (int i = 0; i < this.orders.size(); i++) {
             Order o = this.orders.get(i);
-            palautus = palautus +  "\n - " + o.toString();
+            palautus = palautus + "\n - " + o.toString();
             yht = yht + o.getPrice();
         }
         palautus = palautus + "\nTotal: " + yht + "€";

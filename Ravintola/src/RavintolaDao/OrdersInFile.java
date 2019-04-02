@@ -18,32 +18,32 @@ import java.util.Scanner;
  * @author Anttoni
  */
 public class OrdersInFile {
-    
+
     private List<Order> orders;
     private String file;
 
-    public OrdersInFile(String file) throws IOException  {
+    public OrdersInFile(String file) throws IOException {
         orders = new ArrayList<>();
         this.file = file;
         try {
             Scanner reader = new Scanner(new File(file));
-            
+
             while (reader.hasNextLine()) {
                 String[] parts = reader.nextLine().split(";");
                 Order o = new Order(Integer.parseInt(parts[0]), parts[1], Integer.parseInt(parts[2]));
-                
+
                 orders.add(o);
             }
         } catch (Exception e) {
-            
+
             System.out.println("File not found");
             FileWriter writer = new FileWriter(new File(file));
             writer.close();
         }
-        
+
     }
-    
-    public List<Order> getOrders(){
+
+    public List<Order> getOrders() {
         return this.orders;
     }
 

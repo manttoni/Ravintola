@@ -31,29 +31,29 @@ public class RavintolaUI {
 
         UsersInFile users = new UsersInFile("userlist.txt");
 
-            //users.printUsers();
-            System.out.println("***");
-            System.out.print("Username: ");
+        //users.printUsers();
+        System.out.println("***");
+        System.out.print("Username: ");
 
-            String username = sc.nextLine();
+        String username = sc.nextLine();
 
-            System.out.print("Password: ");
+        System.out.print("Password: ");
 
-            String password = sc.nextLine();
+        String password = sc.nextLine();
 
-            User user = new User(username, password);
+        User user = new User(username, password);
 
-            User reference = users.getUser(user);
+        User reference = users.getUser(user);
 
-            if (users.isUser(user) && reference.getStatus().equals("waiter")) {
-                welcomeWaiter(reference);
-            } else if (users.isUser(user) && reference.getStatus().equals("manager")) {
-                welcomeManager(reference);
-            } else {
-                System.out.println("Wrong username or password");
-                return;
-            }
-        
+        if (users.isUser(user) && reference.getStatus().equals("waiter")) {
+            welcomeWaiter(reference);
+        } else if (users.isUser(user) && reference.getStatus().equals("manager")) {
+            welcomeManager(reference);
+        } else {
+            System.out.println("Wrong username or password");
+            return;
+        }
+
     }
 
     public static void welcomeWaiter(User user) throws Exception {

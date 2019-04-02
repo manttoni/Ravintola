@@ -23,14 +23,14 @@ public class Order {
 
     @Override
     public String toString() {
-        return this.name + " * "+ this.price + "€";
+        return this.name + " * " + this.price + "€";
     }
-    
-    public int getID(){
+
+    public int getID() {
         return this.id;
     }
-    
-    public int getPrice(){
+
+    public int getPrice() {
         return this.price;
     }
 

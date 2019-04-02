@@ -19,7 +19,7 @@ public class Ravintola {
             if (s.nextLine().equals("2")) {
                 RavintolaUI.login();
             }
-            
+
             return;
 
         }

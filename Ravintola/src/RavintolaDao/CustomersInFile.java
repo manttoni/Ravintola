@@ -20,7 +20,7 @@ import java.util.Scanner;
  * @author Anttoni
  */
 public class CustomersInFile {
-    
+
     private List<Customer> customers;
     private String file;
 
@@ -49,14 +49,13 @@ public class CustomersInFile {
         }
 
     }
-    
-    public List<Customer> getCustomers(List<Integer> idList){
+
+    public List<Customer> getCustomers(List<Integer> idList) {
         List<Customer> lista = new ArrayList<>();
-        for(int i = 0; i < idList.size();i++){
-            for(int j = 0; j < customers.size();j++){
+        for (int i = 0; i < idList.size(); i++) {
+            for (int j = 0; j < customers.size(); j++) {
                 Customer c = new Customer(idList.get(i));
-                if(c.getID() == customers.get(j).getID())
-                {
+                if (c.getID() == customers.get(j).getID()) {
                     lista.add(customers.get(i));
                 }
             }
