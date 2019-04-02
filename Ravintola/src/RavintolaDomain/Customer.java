@@ -55,5 +55,9 @@ public class Customer {
         palautus = palautus + "\nTotal: " + yht + "€";
         return palautus;
     }
+    
+    public List<Order> getOrders(){
+        return this.orders;
+    }
 
 }
