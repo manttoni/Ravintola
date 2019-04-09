@@ -1,5 +1,11 @@
-1;true;1;2
-2;false;
-3;false;
-4;false;
-5;false;
+tableID = 1
+endTable
+tableID = 2
+endTable
+tableID = 3
+endTable
+tableID = 4
+endTable
+tableID = 5
+endTable
+endFile

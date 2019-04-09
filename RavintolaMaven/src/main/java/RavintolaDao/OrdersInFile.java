@@ -20,11 +20,14 @@ import java.util.Scanner;
 public class OrdersInFile {
 
     private List<Order> orders;
-    private String file;
+    private final String file = "src/main/java/RavintolaDao/txt/orderlist.txt";
 
-    public OrdersInFile(String file) throws IOException {
+    public OrdersInFile() throws IOException {
         orders = new ArrayList<>();
-        this.file = file;
+
+    }
+
+    public void readOrdersFromFile() throws IOException {
         try {
             Scanner reader = new Scanner(new File(file));
 
@@ -40,7 +43,6 @@ public class OrdersInFile {
             FileWriter writer = new FileWriter(new File(file));
             writer.close();
         }
-
     }
 
     public List<Order> getOrders() {

@@ -3,3 +3,4 @@
 
 9.4.
 14:30 - 15:00 Maven projektin luominen (RavintolaMaven), siirsin sinne edellisen projektin "Ravintola" sis‰llˆn, koska se ei ollut Maven-projekti. .gitignore p‰ivitetty, pom.xml p‰ivitys ensimm‰isen kerran. Ohjelman tiedon s‰ilytt‰miseen k‰ytett‰v‰t .txt-tiedostot siirretty RavintolaDao/txt kansioon.
+15:00 - 20:00 Maven asennus. Ohjelmointi. Muutokset n√§kyv√§t README.md:st√§.

@@ -23,7 +23,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return this.name + " * " + this.price + "€";
+        return this.name + " * " + this.price + "e";
     }
 
     public int getID() {

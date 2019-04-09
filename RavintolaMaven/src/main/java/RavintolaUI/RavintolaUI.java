@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package RavintolaUI;
 
 import RavintolaDao.OrdersInFile;
 import RavintolaDao.TablesInFile;
 import RavintolaDao.UsersInFile;
+import RavintolaDomain.Customer;
 import RavintolaDomain.Order;
 import RavintolaDomain.Table;
 import RavintolaDomain.User;
@@ -15,100 +11,223 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- *
- * @author Anttoni
- */
 public class RavintolaUI {
-
-    /**
-     *
-     * @throws java.io.IOException
-     */
-    private static Scanner sc = new Scanner(System.in);
 
     public static void login() throws Exception {
 
+        Scanner s = new Scanner(System.in);
+
         UsersInFile users = new UsersInFile("src/main/java/RavintolaDao/txt/userlist.txt");
 
-        //users.printUsers();
-        System.out.println("***");
+        leiska.viiva();
         System.out.print("Username: ");
 
-        String username = sc.nextLine();
+        String username = s.nextLine();
 
         System.out.print("Password: ");
 
-        String password = sc.nextLine();
+        String password = s.nextLine();
+
+        leiska.viiva();
 
         User user = new User(username, password);
 
         User reference = users.getUser(user);
 
-        if (users.isUser(user) && reference.getStatus().equals("waiter")) {
+        if (users.isUser(reference) && reference.getStatus().equals("waiter")) {
             welcomeWaiter(reference);
         } else if (users.isUser(user) && reference.getStatus().equals("manager")) {
             welcomeManager(reference);
         } else {
             System.out.println("Wrong username or password");
-            return;
         }
 
+    }
+
+    public static void save(List<Table> tables) throws IOException {
+        TablesInFile tableWriter = new TablesInFile();
+        tableWriter.writeTablesToFile(tables);
     }
 
     public static void welcomeWaiter(User user) throws Exception {
+
+        Scanner s = new Scanner(System.in);
+
+        TablesInFile tableReader = new TablesInFile();
+        tableReader.readTablesFromFile();
+        List<Table> tables = tableReader.getTables();
+
         while (true) {
-            System.out.println("***");
+
             System.out.println("Welcome " + user.getUsername());
-            System.out.println("1 = log out");
-            if (user.getStatus().equals("waiter")) {
-                System.out.println("2 = manage tables");
-            }
-            System.out.println("***");
-            String v = sc.nextLine();
-            if (v.equals("1")) {
-                return;
-            } else if (v.equals("2")) {
-                manageTables(user);
+
+            System.out.println("1 = manage tables");
+            System.out.println("0 = log out and save");
+            leiska.viiva();
+            String v = s.nextLine();
+            if (v.equals("0")) {
+                save(tables);
+                break;
+            } else if (v.equals("1")) {
+                manageTables(tables);
+
             }
         }
     }
 
-    public static void manageTables(User user) throws Exception {
+    public static void manageTables(List<Table> tables) throws Exception {
+        while (true) {
+            Scanner s = new Scanner(System.in);
 
-        TablesInFile tables = new TablesInFile("src/main/java/RavintolaDao/txt/tablelist.txt");
+            leiska.viiva();
 
-        System.out.println("***");
+            for (Table t : tables) {
+                System.out.println(t);
+            }
+            System.out.println("0 = back");
 
-        tables.printTables();
+            leiska.viiva();
+            System.out.print("Select: ");
 
-        System.out.println("***");
-        System.out.print("Select table: ");
+            String v = s.nextLine();
+            leiska.viiva();
+            if (v.equals("0")) {
+                break;
+            }
+            int tableID = Integer.parseInt(v);
+            Table table = null;
 
-        String v = sc.nextLine();
-        int tableID = Integer.parseInt(v);
-        Table table = tables.getTable(tableID);
+            for (Table t : tables) {
+                if (tableID == t.getID()) {
+                    table = t;
+                }
+            }
 
-        System.out.println("***");
-        System.out.println("---");
-        System.out.println("Table: " + v);
-        System.out.println("Customers: " + table.getCustomers().size());
-        table.printCustomers();
-        System.out.println("---");
-        return;
+            System.out.println("Table: " + v);
+            System.out.println("Customers: " + table.getCustomers().size());
+            leiska.viiva();
+            table.printCustomers();
+            leiska.viiva();
 
+            System.out.println("1 = edit selected table (n. " + v + ")");
+            System.out.println("0 = back");
+
+            leiska.viiva();
+
+            v = s.nextLine();
+
+            if (v.equals("1")) {
+                editTable(table);
+
+            }
+            if (v.equals("0")) {
+                break;
+            }
+        }
+    }
+
+    public static void editTable(Table table) throws IOException {
+
+        while (true) {
+            System.out.println(table);
+            table.printCustomers();
+            leiska.viiva();
+            System.out.println("1 = add customer");
+            System.out.println("2 = edit customer");
+            System.out.println("0 = back");
+            leiska.viiva();
+            System.out.print("Selection: ");
+            Scanner s = new Scanner(System.in);
+            String v = s.nextLine();
+            leiska.viiva();
+
+            if (v.equals("1")) {
+                addCustomer(table);
+            } else if (v.equals("2")) {
+                editCustomer(table);
+            } else if (v.equals("0")) {
+                break;
+            }
+        }
+    }
+
+    public static void addCustomer(Table table) {
+        table.addCustomer(new Customer(table.getNewCustomerID()));
+    }
+
+    public static void editCustomer(Table table) throws IOException {
+
+        Scanner s = new Scanner(System.in);
+        String valinta;
+
+        System.out.print("Select customer by id: ");
+        valinta = s.nextLine();
+        Customer c = table.getCustomerWithID(Integer.parseInt(valinta));
+        leiska.viiva();
+
+        c.printOrders();
+
+        leiska.viiva();
+        System.out.println("1 = check out");
+        System.out.println("2 = add order");
+        leiska.viiva();
+
+        System.out.print("Select: ");
+        valinta = s.nextLine();
+        leiska.viiva();
+        if (valinta.equals("1")) {
+            //asiakas maksaa kaiken
+            c.checkOut();
+        } else if (valinta.equals("2")) {
+            addOrder(c);
+
+        }
+    }
+
+    public static void addOrder(Customer customer) throws IOException {
+        while (true) {
+            leiska.viiva();
+            OrdersInFile orderReader = new OrdersInFile();
+            orderReader.readOrdersFromFile();
+            List<Order> orders = orderReader.getOrders();
+            for (Order o : orders) {
+                System.out.println(o.getID() + " = " + o);
+            }
+            System.out.println("0 = back");
+            leiska.viiva();
+            System.out.print("Select: ");
+
+            Scanner s = new Scanner(System.in);
+            String valinta = s.nextLine();
+            leiska.viiva();
+            if (valinta.equals("0")) {
+                break;
+            }
+            for (Order o : orders) {
+                if (o.getID() == Integer.parseInt(valinta)) {
+                    customer.addOrder(o);
+                    System.out.println("Order added: " + o);
+                    continue;
+                }
+            }
+            System.out.println("Please try again");
+
+        }
     }
 
     public static void welcomeManager(User user) throws IOException {
+
+        Scanner s = new Scanner(System.in);
+
         while (true) {
-            System.out.println("***");
+            leiska.viiva();
             System.out.println("Welcome " + user.getUsername());
-            System.out.println("1 = log out");
+            System.out.println("0 = log out");
             System.out.println("2 = show menu");
-            System.out.println("***");
-            String v = sc.nextLine();
-            if (v.equals("1")) {
-                return;
+            leiska.viiva();
+            String v = s.nextLine();
+            if (v.equals("0")) {
+                break;
             } else if (v.equals("2")) {
                 manageMenu(user);
             }
@@ -116,10 +235,11 @@ public class RavintolaUI {
     }
 
     public static void manageMenu(User user) throws IOException {
-        OrdersInFile orders = new OrdersInFile("orderlist.txt");
+        OrdersInFile orders = new OrdersInFile();
+        orders.readOrdersFromFile();
         List<Order> menu = orders.getOrders();
 
-        System.out.println("***");
+        leiska.viiva();
         System.out.println("Menu:");
         for (int i = 0; i < menu.size(); i++) {
             System.out.println(menu.get(i));

@@ -1,2 +1,1 @@
-1;1;2
-2;2
+ohje: id;missä istuu;order1;order2;...

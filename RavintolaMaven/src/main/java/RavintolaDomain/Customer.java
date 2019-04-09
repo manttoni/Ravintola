@@ -17,23 +17,17 @@ import java.util.List;
 public class Customer {
 
     private final int id;
-    private List<Order> orders;
+    private int tableID;
+    private List<Order> orders; //lista ordereista joita ei ole vielä maksettu
 
-    public Customer(int id, List<Integer> idList) throws IOException {
-
-        OrdersInFile orderReader = new OrdersInFile("src/main/java/RavintolaDao/txt/orderlist.txt");
-
+    public Customer(int id) {
         this.id = id;
         this.orders = new ArrayList<>();
-        for (int i = 0; i < idList.size(); i++) {
-            for (int j = 0; j < orderReader.getOrders().size(); j++) {
-                if (idList.get(i) == orderReader.getOrders().get(j).getID()) {
-                    orders.add(orderReader.getOrders().get(j));
-                }
-            }
-        }
     }
 
+    public void addOrder(Order o){
+        this.orders.add(o);
+    }
     public Customer(Integer id) {
         this.id = id;
     }
@@ -41,23 +35,27 @@ public class Customer {
     public int getID() {
         return this.id;
     }
+    
+    public void printOrders(){
+        System.out.println("Orders: " + this.orders.size());
+        System.out.println(this.orders);
+        System.out.println("Total: " + this.totalSum() + "e");
+    }
 
-    @Override
-    public String toString() {
-        String palautus = "";
-        int yht = 0;
-        System.out.print("Orders: " + this.orders.size());
-        for (int i = 0; i < this.orders.size(); i++) {
-            Order o = this.orders.get(i);
-            palautus = palautus + "\n - " + o.toString();
-            yht = yht + o.getPrice();
+    public int totalSum(){
+        int sum = 0;
+        for(Order o : this.orders){
+            sum = sum + o.getPrice();
         }
-        palautus = palautus + "\nTotal: " + yht + "€";
-        return palautus;
+        return sum;
+    }
+
+    public List<Order> getOrders() {
+        return this.orders;
     }
     
-    public List<Order> getOrders(){
-        return this.orders;
+    public void checkOut(){
+        this.orders = new ArrayList<>();
     }
 
 }

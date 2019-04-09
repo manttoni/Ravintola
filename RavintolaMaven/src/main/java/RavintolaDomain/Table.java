@@ -5,8 +5,8 @@
  */
 package RavintolaDomain;
 
-import RavintolaDao.CustomersInFile;
-import java.io.IOException;
+import RavintolaUI.leiska;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,34 +15,32 @@ import java.util.List;
  */
 public class Table {
 
-    private final int number;
-    private boolean reserved;
+    private final int id;
     private List<Customer> customers;
 
-    public Table(int number, boolean reserved, List<Integer> idList) throws IOException {
-
-        CustomersInFile customersInFile = new CustomersInFile("src/main/java/RavintolaDao/txt/customerlist.txt");
-
-        this.number = number;
-        this.reserved = reserved;
-        this.customers = customersInFile.getCustomers(idList);
+    public Table(int id) {
+        this.id = id;
+        this.customers = new ArrayList<>();
     }
 
     @Override
     public String toString() {
 
-        String palautus = "Table n. " + number + " is reserved: " + reserved;
-
-        if (reserved) {
-            return palautus + " number of customers: " + customers.size();
-        }
-
-        return palautus;
+        return "Table n. " + id + "\nNumber of customers: " + customers.size();
 
     }
 
+    public Customer getCustomerWithID(int id) {
+        for (Customer c : this.customers) {
+            if (c.getID() == id) {
+                return c;
+            }
+        }
+        return null;
+    }
+
     public int getID() {
-        return this.number;
+        return this.id;
     }
 
     public List<Customer> getCustomers() {
@@ -52,9 +50,32 @@ public class Table {
     public void printCustomers() {
         for (int i = 0; i < this.customers.size(); i++) {
             int n = i + 1;
-            System.out.println("***\nCustomer n. " + n);
-            System.out.println(this.customers.get(i));
+            leiska.viiva();
+            System.out.println("Customer n. " + n + "(id: " + this.customers.get(i).getID() + ")");
+            this.customers.get(i).printOrders();
         }
+    }
+
+    public int getNewCustomerID() {
+        int idOsaKaks = 1;
+        List<Integer> notFreeIDs = new ArrayList<>();
+
+        for (Customer c : this.customers) {
+            notFreeIDs.add(c.getID());
+        }
+
+        while (notFreeIDs.contains(Integer.parseInt("" + this.id + idOsaKaks))) {
+            idOsaKaks++;
+        }
+        return Integer.parseInt("" + this.id + idOsaKaks);
+    }
+
+    
+    
+    public void addCustomer(Customer customer) {
+        
+        this.customers.add(customer);
+        System.out.println("Customer added: " + customer);
     }
 
 }
