@@ -21,7 +21,7 @@ public class Table {
 
     public Table(int number, boolean reserved, List<Integer> idList) throws IOException {
 
-        CustomersInFile customersInFile = new CustomersInFile("customerlist.txt");
+        CustomersInFile customersInFile = new CustomersInFile("src/main/java/RavintolaDao/txt/customerlist.txt");
 
         this.number = number;
         this.reserved = reserved;

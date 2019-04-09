@@ -1,0 +1,5 @@
+02.04
+15:30 - 20:42
+
+9.4.
+14:30 - 15:00 Maven projektin luominen (RavintolaMaven), siirsin sinne edellisen projektin "Ravintola" sisällön, koska se ei ollut Maven-projekti. .gitignore päivitetty, pom.xml päivitys ensimmäisen kerran. Ohjelman tiedon säilyttämiseen käytettävät .txt-tiedostot siirretty RavintolaDao/txt kansioon.

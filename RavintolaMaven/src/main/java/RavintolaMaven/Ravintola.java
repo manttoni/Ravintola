@@ -1,4 +1,4 @@
-package ravintola;
+package RavintolaMaven;
 
 import RavintolaUI.RavintolaUI;
 import java.util.Scanner;

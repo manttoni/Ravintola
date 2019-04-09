@@ -21,7 +21,7 @@ public class Customer {
 
     public Customer(int id, List<Integer> idList) throws IOException {
 
-        OrdersInFile orderReader = new OrdersInFile("orderlist.txt");
+        OrdersInFile orderReader = new OrdersInFile("src/main/java/RavintolaDao/txt/orderlist.txt");
 
         this.id = id;
         this.orders = new ArrayList<>();

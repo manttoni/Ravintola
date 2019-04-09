@@ -29,7 +29,7 @@ public class RavintolaUI {
 
     public static void login() throws Exception {
 
-        UsersInFile users = new UsersInFile("userlist.txt");
+        UsersInFile users = new UsersInFile("src/main/java/RavintolaDao/txt/userlist.txt");
 
         //users.printUsers();
         System.out.println("***");
@@ -76,7 +76,7 @@ public class RavintolaUI {
 
     public static void manageTables(User user) throws Exception {
 
-        TablesInFile tables = new TablesInFile("tablelist.txt");
+        TablesInFile tables = new TablesInFile("src/main/java/RavintolaDao/txt/tablelist.txt");
 
         System.out.println("***");
 
