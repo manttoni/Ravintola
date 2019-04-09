@@ -10,9 +10,9 @@ package RavintolaUI;
  * @author Anttoni
  */
 public class leiska {
-    
-    public static void viiva(){
+
+    public static void viiva() {
         System.out.println("-----------------");
     }
-    
+
 }

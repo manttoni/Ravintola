@@ -4,42 +4,47 @@
  * and open the template in the editor.
  */
 
-import domain.Customer;
-import domain.Order;
+import dao.UsersInFile;
+import domain.User;
 import java.io.IOException;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
  *
  * @author Anttoni
  */
-public class CustomerTest {
+public class UsersInFileTest {
 
-    Customer c;
+    UsersInFile users;
 
-    public CustomerTest() {
+    public UsersInFileTest() {
     }
 
-    @Before
-    public void setUp() throws IOException {
-        c = new Customer(11);
-        c.addOrder(new Order(1, "ranskalaiset", 2));
-        c.addOrder(new Order(2, "makkara", 2));
-
-        //c on tilannu ranskalaiset ja makkaran
-    }
-
-    @Test
-    public void tilauksetOikein() {
-        assertTrue(c.getOrders().get(0).toString().equals("ranskalaiset * 2e") && c.getOrders().get(1).toString().equals("makkara * 2e"));
+    @BeforeClass
+    public static void setUpClass() {
     }
 
     @AfterClass
     public static void tearDownClass() {
+    }
+
+    @Before
+    public void setUp() {
+        users = new UsersInFile();
+    }
+
+    @Test
+    public void userienLukeminenToimii() throws IOException {
+        List<User> lista;
+        users.readUsersFromFile();
+        lista = users.getUsers();
+        assertTrue(!lista.isEmpty());
     }
 
     @After

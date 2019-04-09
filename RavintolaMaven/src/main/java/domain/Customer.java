@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package RavintolaDomain;
+package domain;
 
-import RavintolaDao.OrdersInFile;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,9 +23,10 @@ public class Customer {
         this.orders = new ArrayList<>();
     }
 
-    public void addOrder(Order o){
+    public void addOrder(Order o) {
         this.orders.add(o);
     }
+
     public Customer(Integer id) {
         this.id = id;
     }
@@ -35,16 +34,16 @@ public class Customer {
     public int getID() {
         return this.id;
     }
-    
-    public void printOrders(){
+
+    public void printOrders() {
         System.out.println("Orders: " + this.orders.size());
         System.out.println(this.orders);
         System.out.println("Total: " + this.totalSum() + "e");
     }
 
-    public int totalSum(){
+    public int totalSum() {
         int sum = 0;
-        for(Order o : this.orders){
+        for (Order o : this.orders) {
             sum = sum + o.getPrice();
         }
         return sum;
@@ -53,8 +52,8 @@ public class Customer {
     public List<Order> getOrders() {
         return this.orders;
     }
-    
-    public void checkOut(){
+
+    public void checkOut() {
         this.orders = new ArrayList<>();
     }
 

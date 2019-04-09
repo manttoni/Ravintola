@@ -1,12 +1,12 @@
 package RavintolaUI;
 
-import RavintolaDao.OrdersInFile;
-import RavintolaDao.TablesInFile;
-import RavintolaDao.UsersInFile;
-import RavintolaDomain.Customer;
-import RavintolaDomain.Order;
-import RavintolaDomain.Table;
-import RavintolaDomain.User;
+import dao.OrdersInFile;
+import dao.TablesInFile;
+import dao.UsersInFile;
+import domain.Customer;
+import domain.Order;
+import domain.Table;
+import domain.User;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
@@ -17,7 +17,8 @@ public class RavintolaUI {
 
         Scanner s = new Scanner(System.in);
 
-        UsersInFile users = new UsersInFile("src/main/java/RavintolaDao/txt/userlist.txt");
+        UsersInFile users = new UsersInFile();
+        users.readUsersFromFile();
 
         leiska.viiva();
         System.out.print("Username: ");
@@ -83,6 +84,7 @@ public class RavintolaUI {
 
             for (Table t : tables) {
                 System.out.println(t);
+                leiska.viiva();
             }
             System.out.println("0 = back");
 
@@ -110,6 +112,7 @@ public class RavintolaUI {
             leiska.viiva();
 
             System.out.println("1 = edit selected table (n. " + v + ")");
+            System.out.println("2 = checkout table");
             System.out.println("0 = back");
 
             leiska.viiva();
@@ -119,6 +122,9 @@ public class RavintolaUI {
             if (v.equals("1")) {
                 editTable(table);
 
+            }
+            if (v.equals("2")) {
+                table.checkOut();
             }
             if (v.equals("0")) {
                 break;
@@ -177,7 +183,7 @@ public class RavintolaUI {
         leiska.viiva();
         if (valinta.equals("1")) {
             //asiakas maksaa kaiken
-            c.checkOut();
+            table.checkOutCustomer(c);
         } else if (valinta.equals("2")) {
             addOrder(c);
 
@@ -207,10 +213,8 @@ public class RavintolaUI {
                 if (o.getID() == Integer.parseInt(valinta)) {
                     customer.addOrder(o);
                     System.out.println("Order added: " + o);
-                    continue;
                 }
             }
-            System.out.println("Please try again");
 
         }
     }

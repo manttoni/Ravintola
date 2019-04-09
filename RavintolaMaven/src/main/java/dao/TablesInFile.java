@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package RavintolaDao;
+package dao;
 
-import RavintolaDomain.Customer;
-import RavintolaDomain.Order;
-import RavintolaDomain.Table;
+import domain.Customer;
+import domain.Order;
+import domain.Table;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -22,7 +22,7 @@ import java.util.Scanner;
 public class TablesInFile {
 
     private List<Table> tables;
-    private final String file = "src/main/java/RavintolaDao/txt/tablelist.txt";
+    private final String file = "src/main/java/dao/txt/tablelist.txt";
 
     public TablesInFile() {
 

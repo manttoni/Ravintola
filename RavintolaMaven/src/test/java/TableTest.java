@@ -5,45 +5,55 @@
  */
 
 import domain.Customer;
-import domain.Order;
-import java.io.IOException;
+import domain.Table;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
  *
  * @author Anttoni
  */
-public class CustomerTest {
+public class TableTest {
 
+    Table table;
     Customer c;
 
-    public CustomerTest() {
+    public TableTest() {
     }
 
-    @Before
-    public void setUp() throws IOException {
-        c = new Customer(11);
-        c.addOrder(new Order(1, "ranskalaiset", 2));
-        c.addOrder(new Order(2, "makkara", 2));
-
-        //c on tilannu ranskalaiset ja makkaran
-    }
-
-    @Test
-    public void tilauksetOikein() {
-        assertTrue(c.getOrders().get(0).toString().equals("ranskalaiset * 2e") && c.getOrders().get(1).toString().equals("makkara * 2e"));
+    @BeforeClass
+    public static void setUpClass() {
     }
 
     @AfterClass
     public static void tearDownClass() {
     }
 
+    @Before
+    public void setUp() {
+        table = new Table(1);
+        c = new Customer(11);
+    }
+
     @After
     public void tearDown() {
+    }
+
+    @Test
+    public void customerinLisaysTableen() {
+        table.addCustomer(c);
+        assertTrue(!table.getCustomers().isEmpty());
+    }
+
+    @Test
+    public void customerinCheckOut() {
+        table.addCustomer(c);
+        table.checkOutCustomer(c);
+        assertTrue(table.getCustomers().isEmpty());
     }
 
     // TODO add test methods here.

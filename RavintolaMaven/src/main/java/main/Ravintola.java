@@ -1,4 +1,4 @@
-package RavintolaMaven;
+package main;
 
 import RavintolaUI.RavintolaUI;
 import RavintolaUI.leiska;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package RavintolaDomain;
+package domain;
 
 import RavintolaUI.leiska;
 import java.util.ArrayList;
@@ -28,6 +28,18 @@ public class Table {
 
         return "Table n. " + id + "\nNumber of customers: " + customers.size();
 
+    }
+
+    public void checkOut() {
+        this.customers = new ArrayList<>();
+    }
+
+    public void checkOutCustomer(Customer customerPaid) {
+        for (int i = 0; i < this.customers.size(); i++) {
+            if (this.customers.get(i).getID() == customerPaid.getID()) {
+                this.customers.remove(i);
+            }
+        }
     }
 
     public Customer getCustomerWithID(int id) {
@@ -70,12 +82,9 @@ public class Table {
         return Integer.parseInt("" + this.id + idOsaKaks);
     }
 
-    
-    
     public void addCustomer(Customer customer) {
-        
+
         this.customers.add(customer);
-        System.out.println("Customer added: " + customer);
     }
 
 }

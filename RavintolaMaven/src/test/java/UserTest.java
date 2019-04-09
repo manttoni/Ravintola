@@ -4,46 +4,53 @@
  * and open the template in the editor.
  */
 
-import domain.Customer;
-import domain.Order;
+import dao.UsersInFile;
+import domain.User;
 import java.io.IOException;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
  *
  * @author Anttoni
  */
-public class CustomerTest {
+public class UserTest {
 
-    Customer c;
+    User user;
+    UsersInFile users;
+    List<User> listaUsereista;
 
-    public CustomerTest() {
+    public UserTest() {
     }
 
-    @Before
-    public void setUp() throws IOException {
-        c = new Customer(11);
-        c.addOrder(new Order(1, "ranskalaiset", 2));
-        c.addOrder(new Order(2, "makkara", 2));
-
-        //c on tilannu ranskalaiset ja makkaran
-    }
-
-    @Test
-    public void tilauksetOikein() {
-        assertTrue(c.getOrders().get(0).toString().equals("ranskalaiset * 2e") && c.getOrders().get(1).toString().equals("makkara * 2e"));
+    @BeforeClass
+    public static void setUpClass() {
     }
 
     @AfterClass
     public static void tearDownClass() {
     }
 
+    @Before
+    public void setUp() throws IOException {
+        user = new User("testaaja", "testaaja", "testaaja");
+        users = new UsersInFile();
+        users.readUsersFromFile();
+        listaUsereista = users.getUsers();
+    }
+
     @After
     public void tearDown() {
+    }
+
+    @Test
+    public void olematontaUseriaEiLoydy() {
+        assertTrue(!users.isUser(user));
     }
 
     // TODO add test methods here.

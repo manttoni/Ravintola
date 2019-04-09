@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package RavintolaDao;
+package dao;
 
-import RavintolaDomain.Order;
+import domain.Order;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -20,7 +20,7 @@ import java.util.Scanner;
 public class OrdersInFile {
 
     private List<Order> orders;
-    private final String file = "src/main/java/RavintolaDao/txt/orderlist.txt";
+    private final String file = "src/main/java/dao/txt/orderlist.txt";
 
     public OrdersInFile() throws IOException {
         orders = new ArrayList<>();
