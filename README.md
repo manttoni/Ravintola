@@ -1,3 +1,14 @@
+Ravintola-ohjelma
+
+Ohjelman tarkoituksena on saada ravintolan osat toimimaan yhdessä. Tarjoilijat keräävät asiakkaiden tilaukset, jotka jaetaan keittiön ja 
+baarin kesken. Kummallekkin printataan kuitti tilauksista, esim keittiö saa heti tiedon tilatuista ranskalaisista ja baarin puolella 
+tiedetään juomatilaukset. 
+
+Ravintolan johto voi käyttää ohjelmaa päivittämällä sinne ravintolan menun, printtaamalla listoja suosituista annoksista ja varastossa 
+olevista tuotteista inventaariota varten.
+
+Dokumentointi
+
 - [Alustava vaatimusmäärittely](https://github.com/manttoni/ot-harjoitustyo/blob/master/dokumentointi/Maarittelydokumentti.md)
 - [Työtuntikirjanpito](https://github.com/manttoni/ot-harjoitustyo/blob/master/ty%C3%B6tuntikirjanpito.txt)
 - [Arkkitehtuuri](https://github.com/manttoni/ot-harjoitustyo/blob/master/dokumentointi/arkkitehtuuri.md)
