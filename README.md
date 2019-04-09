@@ -44,14 +44,23 @@ Ohjelman käyttöohjeet:
 - tablelist.txt rakennetta muokattu seuraavanalaiseksi:
 
 	tableID = *pöydän id*
+
 	customerID = *asiakkaan id. näitä voi olla useita, kunhan tämä lopetetaan ensin endCustomer-rivillä*
+
 	orderID = *yksittäisen tilauksen id, jonka muut tiedot luetaan orderlist.txt:stä. Näitä voi olla useita*
+
 	endCustomer, lukijaa varten
+
 	customerID...
+
 	orderID...
+
 	orderID...
+
 	endCustomer
+
 	endTable, lukijaa varten
+
 	endFile, lukijaa varten
 
 3. viikon version toiminnot:
