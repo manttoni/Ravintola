@@ -69,6 +69,8 @@ public class UsersInFile {
             return;
         }
         addUser(new Waiter(username, "1234"));
+
+        writeUsersToFile();
     }
 
     public void removeUser(User user) {
@@ -77,8 +79,8 @@ public class UsersInFile {
 
     public void addUser(Waiter waiter) throws IOException {
         this.users.add(waiter);
-        System.out.println(waiter + " added. Temporary password is 1234.");
-        writeUsersToFile();
+        System.out.println(waiter.getUsername() + " added. Password is 1234.");
+
     }
 
     public boolean isUser(String username) {

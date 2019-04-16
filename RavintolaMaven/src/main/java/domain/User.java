@@ -23,7 +23,7 @@ public class User {
     private String status = "?";
     protected final TablesInFile tableReader;
     protected final OrdersInFile orderReader;
-    private final UsersInFile userReader;
+    protected final UsersInFile userReader;
 
     public User(String name, String password, String status) throws IOException {
         this.name = name;
@@ -70,6 +70,10 @@ public class User {
         return this.tableReader.getTables();
     }
 
+    public List<Order> getMenu() {
+        return this.orderReader.getOrders();
+    }
+
     @Override
     public String toString() {
         return "username: " + this.name + " | status: " + this.status;
@@ -87,10 +91,6 @@ public class User {
 
         return this.status;
 
-    }
-
-    public void addOrder(int id, String orderName, int price) {
-        this.orderReader.getOrders().add(new Order(id, orderName, price));
     }
 
     public void saveOrders() throws IOException {

@@ -1,3 +1,5 @@
+package domainTest;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,11 +21,13 @@ import org.junit.Test;
  *
  * @author Anttoni
  */
-public class UsersInFileTest {
+public class UserTest {
 
+    User user;
     UsersInFile users;
+    List<User> listaUsereista;
 
-    public UsersInFileTest() {
+    public UserTest() {
     }
 
     @BeforeClass
@@ -35,20 +39,36 @@ public class UsersInFileTest {
     }
 
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
+        user = new User("testaaja", "testaaja", "testaaja");
         users = new UsersInFile();
-    }
-
-    @Test
-    public void userienLukeminenToimii() throws IOException {
-        List<User> lista;
         users.readUsersFromFile();
-        lista = users.getUsers();
-        assertTrue(!lista.isEmpty());
+        listaUsereista = users.getUsers();
     }
 
     @After
     public void tearDown() {
+    }
+
+    @Test
+    public void olematontaUseriaEiLoydy() {
+        assertTrue(!users.isUser(user.getUsername()));
+    }
+    
+    @Test
+    public void passwordinVaihtoToimii(){
+        user.setPassword("uusi salasana");
+        assertTrue(user.getPassword().equals("uusi salasana"));
+    }
+    
+    @Test
+    public void userTietaaMenun(){
+        assertTrue(!user.getMenu().isEmpty());
+    }
+    
+    @Test
+    public void userTietaaPoydat(){
+        assertTrue(!user.getTables().isEmpty());
     }
 
     // TODO add test methods here.

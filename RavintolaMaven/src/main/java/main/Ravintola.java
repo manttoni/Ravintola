@@ -2,6 +2,7 @@ package main;
 
 import RavintolaUI.RavintolaUI;
 import RavintolaUI.leiska;
+import dao.UsersInFile;
 import java.util.Scanner;
 
 /**
@@ -20,8 +21,8 @@ public class Ravintola {
             System.out.println("2 = log in");
             leiska.viiva();
             if (s.nextLine().equals("2")) {
-
-                RavintolaUI.login();
+                RavintolaUI ui = new RavintolaUI(new UsersInFile());
+                ui.login();
 
             } else {
 

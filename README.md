@@ -9,24 +9,19 @@ olevista tuotteista inventaariota varten.
 
 Dokumentointi
 
-- [Viikon 5 release](https://github.com/manttoni/ot-harjoitustyo/releases/tag/viikko5)
+- [Viikon 5 release (tein releasen jälkeen vielä paljon päivityksiä)](https://github.com/manttoni/ot-harjoitustyo/releases/tag/viikko5)
 - [Alustava vaatimusmäärittely](https://github.com/manttoni/ot-harjoitustyo/blob/master/dokumentointi/Maarittelydokumentti.md)
 - [Työtuntikirjanpito](https://github.com/manttoni/ot-harjoitustyo/blob/master/dokumentointi/ty%C3%B6tuntikirjanpito.txt)
 - [Arkkitehtuuri](https://github.com/manttoni/ot-harjoitustyo/blob/master/dokumentointi/arkkitehtuuri.md)
 
 Ohjelman käyttöohjeet:
 
-- Ravintolassa on tällä hetkellä vain yksi tarjoilija, jonka Username on "waiter" ja Password on myös "waiter"
-- Samoin on myös vain yksi manager (myös valmiissa ohjelmassa vain 1) jonka username on "manager" ja password on myös "manager"
-- manager ei voi tällä hetkellä tehdä muuta, kuin printata menun
-- Kaikki pöydät ovat oletuksena tyhjiä. Niihin voi lisätä asiakkaita waiter-tunnuksilla "manage tables" valikosta
-- Asiakkaalle voi lisätä tilauksia "add orders"-valikosta
-- Asiakas voi maksaa tilauksensa, jolloin valitaan edit customer-> checkout. Vaihtoehtoisesti koko pöydän voi checkouttaa
+- Tunnuksia, joiden salasana on sama kuin tunnus: "manager", "chef", "waiter"
 
 5. viikon version toiminnot:
 
-- RavintolaUI-luokasta otettu pois koodia ja siirretty Domain-pakettiin uusiin luokkiin Waiter, Manager ja Chef. 
-	- Uudet luokat perivät User-luokan. Jokaisessa uudessa luokassa on kyseisen käyttäjätyypin käyttäjäoikeuksiin liittyviä toimintoja.
+- RavintolaUI-luokasta siirretty koodia WaiterUI ja Waiter-luokkiin. Koodia jaettu sovelluslogiikan ja käyttöliittymän kesken.
+- Samoin tehty Managerin kohdalla
 - Muokattiin id-logiikkaa
 	- Asiakkaan id on nyt yksinkertaisempi
 	- Kun asiakkaita tai ordereita poistetaan ja lisätään omilta listoiltaan, niiden id:t alustetaan [1,2,3,...] selkeyden vuoksi.

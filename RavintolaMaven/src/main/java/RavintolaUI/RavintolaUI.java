@@ -1,12 +1,8 @@
 package RavintolaUI;
 
-import dao.OrdersInFile;
 import dao.UsersInFile;
 import domain.Chef;
-import domain.Customer;
 import domain.Manager;
-import domain.Order;
-import domain.Table;
 import domain.User;
 import domain.Waiter;
 import java.io.IOException;
@@ -15,12 +11,17 @@ import java.util.Scanner;
 
 public class RavintolaUI {
 
-    public static void login() throws Exception {
+    private List<User> users;
+    private UsersInFile userReader;
+
+    public RavintolaUI(UsersInFile userReader) throws IOException {
+        this.userReader = userReader;
+        userReader.readUsersFromFile();
+    }
+
+    public void login() throws Exception {
 
         Scanner s = new Scanner(System.in);
-
-        UsersInFile users = new UsersInFile();
-        users.readUsersFromFile();
 
         leiska.viiva();
         System.out.print("Username: ");
@@ -34,9 +35,9 @@ public class RavintolaUI {
         leiska.viiva();
         User user = null;
 
-        user = users.getUser(username);
+        user = this.userReader.getUser(username);
 
-        if (!user.getPassword().equals(password)) {
+        if (!user.getPassword().equals(password) || user == null) {
             System.out.println("Wrong username or password");
             return;
         }
@@ -45,7 +46,7 @@ public class RavintolaUI {
 
     }
 
-    public static void welcome(User user) throws Exception {
+    public void welcome(User user) throws Exception {
         Scanner s = new Scanner(System.in);
         while (true) {
             System.out.println("Welcome " + user.getUsername());
@@ -87,27 +88,30 @@ public class RavintolaUI {
             if (valinta.equals("0")) {
                 break;
             } else if (valinta.equals("1")) {
-                waiter.manageTables();
+                WaiterUI ui = new WaiterUI(waiter);
+                ui.manageTables();
             }
 
         }
     }
 
-    public static void welcomeManager(Manager manager) throws IOException {
+    public void welcomeManager(Manager manager) throws IOException {
         while (true) {
 
             System.out.println("0 = to start");
             System.out.println("1 = manage menu");
             System.out.println("2 = add or remove waiters");
             String valinta = leiska.kysy();
+            manager.setUserReader(userReader);
+            ManagerUI ui = new ManagerUI(manager);
 
             if (valinta.equals("0")) {
                 break;
             }
             if (valinta.equals("1")) {
-                manager.manageMenu();
+                ui.manageMenu();
             } else if (valinta.equals("2")) {
-                manager.manageWaiters();
+                ui.manageWaiters();
             }
 
         }

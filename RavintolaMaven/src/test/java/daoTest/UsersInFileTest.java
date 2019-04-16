@@ -1,3 +1,5 @@
+package daoTest;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,13 +21,11 @@ import org.junit.Test;
  *
  * @author Anttoni
  */
-public class UserTest {
+public class UsersInFileTest {
 
-    User user;
     UsersInFile users;
-    List<User> listaUsereista;
 
-    public UserTest() {
+    public UsersInFileTest() {
     }
 
     @BeforeClass
@@ -37,20 +37,20 @@ public class UserTest {
     }
 
     @Before
-    public void setUp() throws IOException {
-        user = new User("testaaja", "testaaja", "testaaja");
+    public void setUp() {
         users = new UsersInFile();
+    }
+
+    @Test
+    public void userienLukeminenToimii() throws IOException {
+        List<User> lista;
         users.readUsersFromFile();
-        listaUsereista = users.getUsers();
+        lista = users.getUsers();
+        assertTrue(!lista.isEmpty());
     }
 
     @After
     public void tearDown() {
-    }
-
-    @Test
-    public void olematontaUseriaEiLoydy() {
-        assertTrue(!users.isUser(user.getUsername()));
     }
 
     // TODO add test methods here.

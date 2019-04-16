@@ -5,11 +5,9 @@
  */
 package domain;
 
-import RavintolaUI.leiska;
 import dao.UsersInFile;
 import java.io.IOException;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  *
@@ -17,35 +15,34 @@ import java.util.Scanner;
  */
 public class Manager extends User {
 
-    private List<Waiter> waiters;
+    private UsersInFile userReader;
 
     public Manager(String name, String password) throws IOException {
         super(name, password, "manager");
-
     }
 
-    public void manageWaiters() throws IOException {
+    public void setUserReader(UsersInFile userReader) {
+        this.userReader = userReader;
+    }
 
-        UsersInFile userReader = new UsersInFile();
-        userReader.readUsersFromFile();
+    public UsersInFile getUserReader() {
+        return this.userReader;
+    }
 
-        while (true) {
-            this.waiters = userReader.getWaiters();
-            System.out.println("List of waiter users");
-            for (Waiter w : waiters) {
-                System.out.println("username = " + w.getUsername());
-            }
-
-            System.out.println("0 = back");
-            System.out.println("Type username from list to remove user. \nType new username to add user");
-            String valinta = leiska.kysy();
-
-            if (valinta.equals("0")) {
-                break;
-            } else {
-                userReader.removeOrAdd(valinta);
+    public void removeFromMenu(int i) {
+        Order poistettava = null;
+        for (Order o : super.getMenu()) {
+            if (o.getID() == i) {
+                poistettava = o;
             }
         }
+        super.getMenu().remove(poistettava);
+        remakeID(super.getMenu());
+    }
+
+    public List<Waiter> getWaiters() {
+
+        return this.userReader.getWaiters();
     }
 
     public void printMenu() {
@@ -54,55 +51,13 @@ public class Manager extends User {
         }
     }
 
-    public void removeOrder(int id) {
-        List<Order> orders = this.orderReader.getOrders();
-        Order poistettava = null;
-        for (Order o : orders) {
-            if (o.getID() == id) {
-                poistettava = o;
-            }
-        }
-        orders.remove(poistettava);
-        remakeID(orders);
+    public List<Order> getMenu() {
+        return super.orderReader.getOrders();
     }
 
     public void remakeID(List<Order> l) {
         for (int i = 0; i < l.size(); i++) {
             l.get(i).setID(i + 1);
-        }
-    }
-
-    public void manageMenu() throws IOException {
-        while (true) {
-            System.out.println("0 = back");
-            System.out.println("1 = print menu");
-            String valinta = leiska.kysy();
-            if (valinta.equals("0")) {
-                break;
-            }
-            if (valinta.equals("1")) {
-                while (true) {
-                    printMenu();
-                    leiska.viiva();
-                    System.out.println("0 = back");
-                    System.out.println("x = remove");
-                    int i = super.orderReader.getOrders().size() + 1;
-                    System.out.println(i + " = add");
-                    valinta = leiska.kysy();
-                    if (valinta.equals("0")) {
-                        break;
-                    } else if (valinta.equals("" + i)) {
-                        Scanner s = new Scanner(System.in);
-                        System.out.print("New menu item's name: ");
-                        String orderName = s.nextLine();
-                        System.out.print("New menu item's price: ");
-                        int price = Integer.parseInt(s.nextLine());
-                        addOrder(i, orderName, price);
-                    } else {
-                        removeOrder(Integer.parseInt(valinta));
-                    }
-                }
-            }
         }
     }
 

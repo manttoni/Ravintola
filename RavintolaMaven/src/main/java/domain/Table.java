@@ -49,8 +49,8 @@ public class Table {
     }
 
     public void remakeID(List<Customer> l) {
-        for (int i = 0; i < this.customers.size(); i++) {
-            this.customers.get(i).setID(i + 1);
+        for (int i = 0; i < l.size(); i++) {
+            l.get(i).setID(i + 1);
         }
     }
 
@@ -85,6 +85,7 @@ public class Table {
     }
 
     public int getNewCustomerID() {
+        remakeID(this.customers);
         return this.customers.size() + 1;
     }
 

@@ -52,4 +52,7 @@ public class OrdersInFile {
         return this.orders;
     }
 
+    public void addToOrders(Order o) {
+        this.orders.add(o);
+    }
 }
