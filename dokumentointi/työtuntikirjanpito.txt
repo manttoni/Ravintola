@@ -11,6 +11,7 @@ tuntien summa: 8h
 
 16.4.
 13:30 - 19:15 Ohjelmointi
-tuntien summa: 6h
+19:15 - 23:00 Ohjelmointi, testaus, sekvenssikaavio, readmen päivitys, packaging saatu toimimaan
+tuntien summa: 9,5h
 
-kaikkien tuntien summa: 19h
+kaikkien tuntien summa: 23h
