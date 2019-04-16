@@ -9,6 +9,7 @@ olevista tuotteista inventaariota varten.
 
 Dokumentointi
 
+- [Viikon 5 release](https://github.com/manttoni/ot-harjoitustyo/releases/tag/viikko5)
 - [Alustava vaatimusmäärittely](https://github.com/manttoni/ot-harjoitustyo/blob/master/dokumentointi/Maarittelydokumentti.md)
 - [Työtuntikirjanpito](https://github.com/manttoni/ot-harjoitustyo/blob/master/dokumentointi/ty%C3%B6tuntikirjanpito.txt)
 - [Arkkitehtuuri](https://github.com/manttoni/ot-harjoitustyo/blob/master/dokumentointi/arkkitehtuuri.md)
