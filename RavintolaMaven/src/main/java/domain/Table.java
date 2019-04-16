@@ -30,6 +30,11 @@ public class Table {
 
     }
 
+    public void setCustomers(List<Customer> save) {
+        this.customers = save;
+        //siinä tapauksessa, kun tarjoilija haluaakin peruuttaa tehdyt muutokset
+    }
+
     public void checkOut() {
         this.customers = new ArrayList<>();
     }
@@ -39,6 +44,13 @@ public class Table {
             if (this.customers.get(i).getID() == customerPaid.getID()) {
                 this.customers.remove(i);
             }
+        }
+        remakeID(this.customers);
+    }
+
+    public void remakeID(List<Customer> l) {
+        for (int i = 0; i < this.customers.size(); i++) {
+            this.customers.get(i).setID(i + 1);
         }
     }
 
@@ -66,25 +78,23 @@ public class Table {
             System.out.println("Customer n. " + n + "(id: " + this.customers.get(i).getID() + ")");
             this.customers.get(i).printOrders();
         }
+
+        if (this.customers.isEmpty()) {
+            System.out.println("No customers. Table is free");
+        }
     }
 
     public int getNewCustomerID() {
-        int idOsaKaks = 1;
-        List<Integer> notFreeIDs = new ArrayList<>();
-
-        for (Customer c : this.customers) {
-            notFreeIDs.add(c.getID());
-        }
-
-        while (notFreeIDs.contains(Integer.parseInt("" + this.id + idOsaKaks))) {
-            idOsaKaks++;
-        }
-        return Integer.parseInt("" + this.id + idOsaKaks);
+        return this.customers.size() + 1;
     }
 
-    public void addCustomer(Customer customer) {
+    public void addCustomer(Customer c) {
+        this.customers.add(c);
+    }
 
-        this.customers.add(customer);
+    public void addCustomer() {
+        Customer c = new Customer(getNewCustomerID());
+        addCustomer(c);
     }
 
 }

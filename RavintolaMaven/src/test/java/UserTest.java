@@ -50,7 +50,7 @@ public class UserTest {
 
     @Test
     public void olematontaUseriaEiLoydy() {
-        assertTrue(!users.isUser(user));
+        assertTrue(!users.isUser(user.getUsername()));
     }
 
     // TODO add test methods here.

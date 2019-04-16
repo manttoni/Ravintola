@@ -1,2 +1,3 @@
-waiter;waiter;waiter
 manager;manager;manager
+chef;chef;chef
+waiter;waiter;waiter

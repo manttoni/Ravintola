@@ -9,4 +9,8 @@ tuntien summa: 5h
 21:52 - 22:21 luokkakaavio, readmen päivitys
 tuntien summa: 8h
 
-kaikkien tuntien summa: 13h
+16.4.
+13:30 - 19:15 Ohjelmointi
+tuntien summa: 6h
+
+kaikkien tuntien summa: 19h

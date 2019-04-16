@@ -21,7 +21,7 @@ import java.util.Scanner;
  */
 public class TablesInFile {
 
-    private List<Table> tables;
+    private final List<Table> tables;
     private final String file = "src/main/java/dao/txt/tablelist.txt";
 
     public TablesInFile() {
@@ -30,10 +30,10 @@ public class TablesInFile {
 
     }
 
-    public void writeTablesToFile(List<Table> tables) throws IOException {
+    public void writeTablesToFile() throws IOException {
 
         FileWriter writer = new FileWriter(this.file);
-        for (Table t : tables) {
+        for (Table t : this.tables) {
             writer.write("tableID = " + t.getID() + "\n");
             if (!t.getCustomers().isEmpty()) {
                 for (Customer c : t.getCustomers()) {

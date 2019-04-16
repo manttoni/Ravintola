@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Customer {
 
-    private final int id;
+    private int id;
     private int tableID;
     private List<Order> orders; //lista ordereista joita ei ole vielä maksettu
 
@@ -33,6 +33,10 @@ public class Customer {
 
     public int getID() {
         return this.id;
+    }
+
+    public void setID(int id) {
+        this.id = id;
     }
 
     public void printOrders() {
@@ -55,6 +59,14 @@ public class Customer {
 
     public void checkOut() {
         this.orders = new ArrayList<>();
+    }
+
+    public void setOrders(List<Order> ord) {
+        this.orders = ord;
+    }
+
+    public void removeOrder(Order o) {
+        this.orders.remove(o);
     }
 
 }

@@ -20,11 +20,13 @@ public class Ravintola {
             System.out.println("2 = log in");
             leiska.viiva();
             if (s.nextLine().equals("2")) {
+
                 RavintolaUI.login();
+
+            } else {
+
+                return;
             }
-
-            return;
-
         }
     }
 

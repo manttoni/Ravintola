@@ -5,31 +5,74 @@
  */
 package domain;
 
+import dao.OrdersInFile;
+import dao.TablesInFile;
+import dao.UsersInFile;
+import java.io.IOException;
+import java.util.List;
+import java.util.Scanner;
+
 /**
  *
  * @author Anttoni
  */
 public class User {
 
-    private String name;
+    private final String name;
     private String password;
     private String status = "?";
+    protected final TablesInFile tableReader;
+    protected final OrdersInFile orderReader;
+    private final UsersInFile userReader;
 
-    public User(String name, String password) {
-        this.name = name;
-        this.password = password;
-    }
-
-    public User(String name, String password, String status) {
+    public User(String name, String password, String status) throws IOException {
         this.name = name;
         this.password = password;
         this.status = status;
+
+        this.tableReader = new TablesInFile();
+        this.tableReader.readTablesFromFile();
+
+        this.orderReader = new OrdersInFile();
+        this.orderReader.readOrdersFromFile();
+
+        this.userReader = new UsersInFile();
+    }
+
+    public void changePassword() throws IOException {
+        System.out.print("New password: ");
+        Scanner s = new Scanner(System.in);
+        String newPassword = s.nextLine();
+        this.userReader.readUsersFromFile();
+        for (User u : this.userReader.getUsers()) {
+            if (u.getUsername().equals(this.name)) {
+                u.setPassword(newPassword);
+            }
+        }
+        userReader.writeUsersToFile();
+    }
+
+    public void setPassword(String newPassword) {
+        this.password = newPassword;
+    }
+
+    public void saveAll() throws IOException {
+        saveTables();
+        saveOrders();
+    }
+
+    public void saveTables() throws IOException {
+        this.tableReader.writeTablesToFile();
+        System.out.println("Tables saved");
+    }
+
+    public List<Table> getTables() {
+        return this.tableReader.getTables();
     }
 
     @Override
     public String toString() {
-
-        return "User{" + "name=" + name + ", password=" + password + ", status=" + status + '}';
+        return "username: " + this.name + " | status: " + this.status;
     }
 
     public String getUsername() {
@@ -44,6 +87,16 @@ public class User {
 
         return this.status;
 
+    }
+
+    public void addOrder(int id, String orderName, int price) {
+        this.orderReader.getOrders().add(new Order(id, orderName, price));
+    }
+
+    public void saveOrders() throws IOException {
+
+        this.orderReader.writeOrdersToFile();
+        System.out.println("Menu saved");
     }
 
 }

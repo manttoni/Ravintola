@@ -10,7 +10,7 @@ olevista tuotteista inventaariota varten.
 Dokumentointi
 
 - [Alustava vaatimusmäärittely](https://github.com/manttoni/ot-harjoitustyo/blob/master/dokumentointi/Maarittelydokumentti.md)
-- [Työtuntikirjanpito](https://github.com/manttoni/ot-harjoitustyo/blob/master/ty%C3%B6tuntikirjanpito.txt)
+- [Työtuntikirjanpito](https://github.com/manttoni/ot-harjoitustyo/blob/master/dokumentointi/ty%C3%B6tuntikirjanpito.txt)
 - [Arkkitehtuuri](https://github.com/manttoni/ot-harjoitustyo/blob/master/dokumentointi/arkkitehtuuri.md)
 
 Ohjelman käyttöohjeet:
@@ -21,6 +21,22 @@ Ohjelman käyttöohjeet:
 - Kaikki pöydät ovat oletuksena tyhjiä. Niihin voi lisätä asiakkaita waiter-tunnuksilla "manage tables" valikosta
 - Asiakkaalle voi lisätä tilauksia "add orders"-valikosta
 - Asiakas voi maksaa tilauksensa, jolloin valitaan edit customer-> checkout. Vaihtoehtoisesti koko pöydän voi checkouttaa
+
+5. viikon version toiminnot:
+
+- RavintolaUI-luokasta otettu pois koodia ja siirretty Domain-pakettiin uusiin luokkiin Waiter, Manager ja Chef. 
+	- Uudet luokat perivät User-luokan. Jokaisessa uudessa luokassa on kyseisen käyttäjätyypin käyttäjäoikeuksiin liittyviä toimintoja.
+- Muokattiin id-logiikkaa
+	- Asiakkaan id on nyt yksinkertaisempi
+	- Kun asiakkaita tai ordereita poistetaan ja lisätään omilta listoiltaan, niiden id:t alustetaan [1,2,3,...] selkeyden vuoksi.
+- Manager voi nyt muokata menua
+- Manager voi nyt poistaa tai luoda uusia waiter-käyttäjiä.
+- Kaikki käyttäjät voivat nyt vaihtaa salasanaansa. Ravintolan uusi manager tai chef (eli keittiömestari) voivat näin ottaa itselleen käyttöoikeudet. Heidän usernamensa ovat aina "manager" tai "chef".
+- Chef voi tulostaa listan varastossa olevasta ruuasta
+	- Uusi tiedosto "inventory.txt"
+	- Uusi luokka "Item", joka tarkoittaa jotain raaka-ainetta varastossa ja sen lukumäärää
+- Tarjoilijan tekemät muutokset näkyvät hyväksymisen jälkeen yhdellä listalla, joka tulostuu keittiön kuittikoneesta.
+- Tarjoilija voi myös peruuttaa tehdyt tilaukset ennen hyväksymistä, jolloin pöydän tilanne palaa takaisin edelliseen tilanteeseen. 
 
 
 4. viikon version toiminnot:

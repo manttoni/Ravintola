@@ -1,2 +1,2 @@
-1;ranskalaiset;2
-2;makkara;2
+1;Pasta Carbonara;5
+2;Omeletti;1

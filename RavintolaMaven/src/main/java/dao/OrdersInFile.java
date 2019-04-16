@@ -28,21 +28,24 @@ public class OrdersInFile {
     }
 
     public void readOrdersFromFile() throws IOException {
-        try {
-            Scanner reader = new Scanner(new File(file));
+        Scanner reader = new Scanner(new File(file));
 
-            while (reader.hasNextLine()) {
-                String[] parts = reader.nextLine().split(";");
-                Order o = new Order(Integer.parseInt(parts[0]), parts[1], Integer.parseInt(parts[2]));
+        while (reader.hasNextLine()) {
+            String[] parts = reader.nextLine().split(";");
+            Order o = new Order(Integer.parseInt(parts[0]), parts[1], Integer.parseInt(parts[2]));
 
-                orders.add(o);
-            }
-        } catch (Exception e) {
-
-            System.out.println("File not found");
-            FileWriter writer = new FileWriter(new File(file));
-            writer.close();
+            orders.add(o);
         }
+
+    }
+
+    public void writeOrdersToFile() throws IOException {
+        FileWriter writer = new FileWriter(this.file);
+        for (Order o : this.orders) {
+            String rivi = o.getID() + ";" + o.getName() + ";" + o.getPrice();
+            writer.write(rivi + "\n");
+        }
+        writer.close();
     }
 
     public List<Order> getOrders() {

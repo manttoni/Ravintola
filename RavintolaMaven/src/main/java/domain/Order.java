@@ -11,7 +11,7 @@ package domain;
  */
 public class Order {
 
-    private final int id;
+    private int id;
     private final String name;
     private final int price;
 
@@ -26,8 +26,16 @@ public class Order {
         return this.name + " * " + this.price + "e";
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public int getID() {
         return this.id;
+    }
+
+    public void setID(int id) {
+        this.id = id;
     }
 
     public int getPrice() {
