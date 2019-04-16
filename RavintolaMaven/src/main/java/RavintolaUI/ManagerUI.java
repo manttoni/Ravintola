@@ -25,7 +25,7 @@ public class ManagerUI {
     }
 
     public void manageWaiters() throws IOException {
-        ;
+        
         while (true) {
             System.out.println("List of waiter users: ");
             for (Waiter w : manager.getWaiters()) {
