@@ -1,14 +1,7 @@
-Alustava määrittelydokumentti ravintolan tietokonejärjestelmästä
+Ravintola-ohjelmisto
 
-Ohjelman tarkoituksena on voida käsitellä tyypillisen ravintolan tilauksia. Siihen kuuluu tarjoilijan 
-käyttöliittymä ja kassapääte sekä muokkaamiseen tarkoitettu käyttöliittymä tietokoneelle.
+Ohjelmaa pystyy käyttämään kolmella eri tavalla, riippuen käyttäjäoikeuksista. Käyttäjätyypit ovat tarjoilija, ravintolapäällikkö ja keittiömestari.
 
-Tarjoilija voi avata pöydän järjestelmässä ja kirjaa ylös asiakkaiden tilaukset. Järjestelmä tulostaa 
-kokille kuitin ruokatilauksista ja baarimikolle juomatilauksista. Järjestelmän pitää muistaa 
-yksittäisten asiakkaiden tilaukset, jotta erikseen maksaminen olisi sujuvampaa.
-
-Ravintolapäällikkö voi kirjautua järjestelmään ja poistaa/lisätä tuotteita tai muokata niitä(hinta, 
-nimi). 
-
-Järjestelmä tallentaa tiedot kaikista myydyistä ja jäljellä olevista tuotteista eli on yhteydessä 
-ravintolan stockpile-tietokantaan.
+	- Tarjoilija voi ottaa asiakkaiden tilaukset vastaan, ja kirjata ne ohjelmaan. Ohjelma säilyttää tiedot ja lähettää tilaukset eteenpäin keittiöön.
+	- Ravintolapäällikkö voi tehdä muutoksia ruokalistaan ja luoda uusia tarjoilija-tunnuksia. 
+	- Keittiömestari voi hallita varaston tilannetta tulostamalla listan siellä olevista raaka-aineista. Sitä voi päivittää esim. inventaarion aikana.

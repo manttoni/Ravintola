@@ -17,6 +17,12 @@ Dokumentointi
 Ohjelman käyttöohjeet:
 
 - Tunnuksia, joiden salasana on sama kuin tunnus: "manager", "chef", "waiter"
+- Komentorivin komennot:
+	- Checkstyle: "mvn jxr:jxr checkstyle:checkstyle"
+	- Testikattavuusraportti: "mvn test jacoco:report"
+	- Ohjelman käynnistys: "mvn compile exec:java -Dexec.mainClass=main.Ravintola"
+	- .jar-tiedoston luonti: "mvn package"
+	- Checkstylen tulokset ja testikattavuusraportti löytyvät tämän jälkeen target-kansiosta. Myös luotu .jar-tiedosto löytyy sieltä.
 
 5. viikon version toiminnot:
 
