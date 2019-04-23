@@ -23,7 +23,7 @@ public class User {
     private String status = "?";
     protected final TablesInFile tableReader;
     protected final OrdersInFile orderReader;
-    protected final UsersInFile userReader;
+    protected UsersInFile userReader;
 
     public User(String name, String password, String status) throws IOException {
         this.name = name;
@@ -38,11 +38,12 @@ public class User {
 
         this.userReader = new UsersInFile();
     }
+    
+    public void setUsersInFileForTest(UsersInFile userfile){
+        this.userReader = userfile;
+    }
 
-    public void changePassword() throws IOException {
-        System.out.print("New password: ");
-        Scanner s = new Scanner(System.in);
-        String newPassword = s.nextLine();
+    public void changePassword(String newPassword) throws IOException {
         this.userReader.readUsersFromFile();
         for (User u : this.userReader.getUsers()) {
             if (u.getUsername().equals(this.name)) {

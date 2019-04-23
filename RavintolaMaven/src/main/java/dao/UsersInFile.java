@@ -24,11 +24,16 @@ import java.util.Scanner;
 public class UsersInFile {
 
     private List<User> users;
-    private final String file = "src/main/java/dao/txt/userlist.txt";
+    private String file;
 
     public UsersInFile() {
-        users = new ArrayList<>();
-
+        this.users = new ArrayList<>();
+        this.file = "src/main/java/dao/txt/userlist.txt";
+    }
+    
+    public UsersInFile(String file){
+        this.file = file;
+        this.users = new ArrayList<>();
     }
 
     public void writeUsersToFile() throws IOException {
@@ -85,6 +90,10 @@ public class UsersInFile {
 
     public boolean isUser(String username) {
 
+        if(this.users.isEmpty()){
+            return false;
+        }
+        
         for (User u : this.users) {
             if (u.getUsername().equals(username)) {
                 return true;

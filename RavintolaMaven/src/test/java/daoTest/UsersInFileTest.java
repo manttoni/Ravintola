@@ -8,6 +8,8 @@ package daoTest;
 
 import dao.UsersInFile;
 import domain.User;
+import domain.Waiter;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import org.junit.After;
@@ -47,6 +49,24 @@ public class UsersInFileTest {
         users.readUsersFromFile();
         lista = users.getUsers();
         assertTrue(!lista.isEmpty());
+    }
+    
+    @Test
+    public void userinLisaysToimii() throws IOException{
+        String file = "src/test/java/daoTest/usertest.txt";
+        
+        
+        Waiter newUser = new Waiter("testi", "testi");
+        UsersInFile userWriter = new UsersInFile(file);
+        userWriter.addUser(newUser);
+        userWriter.writeUsersToFile();
+        
+        UsersInFile toinenLukija = new UsersInFile(file);
+        toinenLukija.readUsersFromFile();
+        
+        File txt = new File(file);
+        
+        assertTrue(toinenLukija.getUsers().get(0).getUsername().equals("testi"));
     }
 
     @After

@@ -26,6 +26,7 @@ public class UserTest {
     User user;
     UsersInFile users;
     List<User> listaUsereista;
+    String testilista;
 
     public UserTest() {
     }
@@ -40,10 +41,12 @@ public class UserTest {
 
     @Before
     public void setUp() throws IOException {
-        user = new User("testaaja", "testaaja", "testaaja");
-        users = new UsersInFile();
+        testilista = "src/test/java/domainTest/testiuserlista.txt";
+        users = new UsersInFile(testilista);
         users.readUsersFromFile();
         listaUsereista = users.getUsers();
+        user = listaUsereista.get(0);
+        user.setUsersInFileForTest(users);
     }
 
     @After
@@ -51,13 +54,13 @@ public class UserTest {
     }
 
     @Test
-    public void olematontaUseriaEiLoydy() {
-        assertTrue(!users.isUser(user.getUsername()));
+    public void olematontaUseriaEiLoydy() throws IOException {
+        assertTrue(!users.isUser("olematon"));
     }
     
     @Test
-    public void passwordinVaihtoToimii(){
-        user.setPassword("uusi salasana");
+    public void passwordinVaihtoToimii() throws IOException{
+        user.changePassword("uusi salasana");
         assertTrue(user.getPassword().equals("uusi salasana"));
     }
     

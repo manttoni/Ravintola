@@ -22,12 +22,17 @@ import java.util.Scanner;
 public class TablesInFile {
 
     private final List<Table> tables;
-    private final String file = "src/main/java/dao/txt/tablelist.txt";
+    private String file = "src/main/java/dao/txt/tablelist.txt";
 
     public TablesInFile() {
 
         this.tables = new ArrayList<>();
 
+    }
+    
+    public TablesInFile(String file){
+        this.file = file;
+        this.tables = new ArrayList<>();
     }
 
     public void writeTablesToFile() throws IOException {

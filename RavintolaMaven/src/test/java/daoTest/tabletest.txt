@@ -1,0 +1,6 @@
+tableID = 1
+customerID = 1
+orderID = 1
+endCustomer
+endTable
+endFile

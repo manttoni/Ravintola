@@ -39,6 +39,11 @@ public class CustomerTest {
     public void tilauksetOikein() {
         assertTrue(c.getOrders().get(0).toString().equals("ranskalaiset * 2e") && c.getOrders().get(1).toString().equals("makkara * 2e"));
     }
+    
+    @Test
+    public void summanLaskemisMetodiToimii(){
+        assertTrue(c.totalSum() == 4);
+    }
 
     @AfterClass
     public static void tearDownClass() {

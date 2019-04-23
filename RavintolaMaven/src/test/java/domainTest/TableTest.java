@@ -85,6 +85,8 @@ public class TableTest {
         table.setCustomers(lista);
         assertTrue(table.getCustomers().size() == 2);
     }
+    
+    
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:

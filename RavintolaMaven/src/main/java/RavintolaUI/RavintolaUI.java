@@ -60,7 +60,9 @@ public class RavintolaUI {
                 user.saveAll();
                 return;
             } else if (valinta.equals("1")) {
-                user.changePassword();
+                System.out.println("New password: ");
+                String newPassword = leiska.kysy();
+                user.changePassword(newPassword);
                 continue;
             }
 
