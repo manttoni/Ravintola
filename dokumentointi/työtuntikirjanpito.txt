@@ -14,4 +14,9 @@ tuntien summa: 8h
 19:15 - 23:00 Ohjelmointi, testaus, sekvenssikaavio, readmen päivitys, packaging saatu toimimaan
 tuntien summa: 9,5h
 
-kaikkien tuntien summa: 23h
+23.4.
+14:00-15:00 Koodikatselmointi
+20:00-21:15 Testaus
+tuntien summa: 2h 15 min
+
+kaikkien tuntien summa: 25h
