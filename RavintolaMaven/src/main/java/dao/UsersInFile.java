@@ -30,8 +30,8 @@ public class UsersInFile {
         this.users = new ArrayList<>();
         this.file = "src/main/java/dao/txt/userlist.txt";
     }
-    
-    public UsersInFile(String file){
+
+    public UsersInFile(String file) {
         this.file = file;
         this.users = new ArrayList<>();
     }
@@ -90,10 +90,10 @@ public class UsersInFile {
 
     public boolean isUser(String username) {
 
-        if(this.users.isEmpty()){
+        if (this.users.isEmpty()) {
             return false;
         }
-        
+
         for (User u : this.users) {
             if (u.getUsername().equals(username)) {
                 return true;

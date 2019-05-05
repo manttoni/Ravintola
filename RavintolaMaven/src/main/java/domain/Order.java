@@ -15,6 +15,12 @@ public class Order {
     private final String name;
     private final int price;
 
+    /**
+     *
+     * @param id
+     * @param name
+     * @param price
+     */
     public Order(int id, String name, int price) {
         this.name = name;
         this.id = id;

@@ -4,13 +4,13 @@ Ohjelman tarkoituksena on saada ravintolan osat toimimaan yhdessä. Tarjoilijat 
 baarin kesken. Kummallekkin printataan kuitti tilauksista, esim keittiö saa heti tiedon tilatuista ranskalaisista ja baarin puolella 
 tiedetään juomatilaukset. 
 
-Ravintolan johto voi käyttää ohjelmaa päivittämällä sinne ravintolan menun, printtaamalla listoja suosituista annoksista ja varastossa 
+Ravintolan johto voi käyttää ohjelmaa päivittämällä sinne ravintolan menun tai tulostamalla listan varastossa 
 olevista tuotteista inventaariota varten.
 
 Dokumentointi
 
 - [Viikon 5 release (tein releasen jälkeen vielä paljon päivityksiä)](https://github.com/manttoni/ot-harjoitustyo/releases/tag/viikko5)
-- [Alustava vaatimusmäärittely](https://github.com/manttoni/ot-harjoitustyo/blob/master/dokumentointi/Maarittelydokumentti.md)
+- [Vaatimusmäärittely](https://github.com/manttoni/ot-harjoitustyo/blob/master/dokumentointi/Maarittelydokumentti.md)
 - [Työtuntikirjanpito](https://github.com/manttoni/ot-harjoitustyo/blob/master/dokumentointi/ty%C3%B6tuntikirjanpito.txt)
 - [Arkkitehtuuri](https://github.com/manttoni/ot-harjoitustyo/blob/master/dokumentointi/arkkitehtuuri.md)
 

@@ -22,10 +22,20 @@ public class WaiterUI {
 
     private Waiter waiter;
 
+    /**
+     *
+     * @param waiter
+     */
     public WaiterUI(Waiter waiter) {
         this.waiter = waiter;
     }
 
+    /**
+     *
+     * @param customer
+     * @return
+     * @throws IOException
+     */
     public List<Order> addOrder(Customer customer) throws IOException {
         //lisää orderin ja palauttaa listan tehdyistä muutoksista mahdollista peruutusta varten
         List<Order> palautus = new ArrayList<>();
@@ -45,6 +55,12 @@ public class WaiterUI {
         return palautus;
     }
 
+    /**
+     *
+     * @param table
+     * @return
+     * @throws IOException
+     */
     public List<Order> editCustomer(Table table) throws IOException {
 
         Customer haamu;
@@ -75,6 +91,11 @@ public class WaiterUI {
 
     }
 
+    /**
+     *
+     * @param table
+     * @throws IOException
+     */
     public void editTable(Table table) throws IOException {
 
         List<Order> uudetTilaukset = new ArrayList<>();
@@ -109,6 +130,10 @@ public class WaiterUI {
         }
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     public void manageTables() throws Exception {
         while (true) {
 

@@ -22,6 +22,12 @@ public class Waiter extends User {
         menu = super.orderReader.getOrders();
     }
 
+    /**
+     * Luo kopion asiakkaista, johon voidaan myöhemmin palata
+     *
+     * @param table
+     * @return
+     */
     public List<Customer> getCustomersCopy(Table table) {
         List<Customer> save = new ArrayList<>();
         for (Customer c : table.getCustomers()) {
@@ -34,6 +40,9 @@ public class Waiter extends User {
         return save;
     }
 
+    /**
+     *
+     */
     public void printMenu() {
         for (Order o : menu) {
             System.out.println(o.getID() + " = " + o);
@@ -53,6 +62,9 @@ public class Waiter extends User {
         return null;
     }
 
+    /*
+     *"lähettää" keittiöön tilauksen
+     */
     public void sendKitchenBong(List<Order> newOrders) {
         System.out.println("Bong sent to kitchen: ");
         for (Order o : newOrders) {

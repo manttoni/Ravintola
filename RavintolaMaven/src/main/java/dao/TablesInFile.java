@@ -29,8 +29,8 @@ public class TablesInFile {
         this.tables = new ArrayList<>();
 
     }
-    
-    public TablesInFile(String file){
+
+    public TablesInFile(String file) {
         this.file = file;
         this.tables = new ArrayList<>();
     }

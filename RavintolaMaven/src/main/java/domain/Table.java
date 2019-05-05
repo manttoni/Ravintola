@@ -30,9 +30,13 @@ public class Table {
 
     }
 
+    /**
+     * siinä tapauksessa, kun tarjoilija haluaakin peruuttaa tehdyt muutokset
+     *
+     * @param save
+     */
     public void setCustomers(List<Customer> save) {
         this.customers = save;
-        //siinä tapauksessa, kun tarjoilija haluaakin peruuttaa tehdyt muutokset
     }
 
     public void checkOut() {
@@ -54,6 +58,12 @@ public class Table {
         }
     }
 
+    /**
+     * palauttaa parametrinä olevan id:n omaavan asiakkaan
+     *
+     * @param id
+     * @return
+     */
     public Customer getCustomerWithID(int id) {
         for (Customer c : this.customers) {
             if (c.getID() == id) {

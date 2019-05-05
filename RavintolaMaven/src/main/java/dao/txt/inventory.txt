@@ -1,3 +1,3 @@
-1;pasta 1kg;10
-2;pekoni 500g;10
-3;kananmuna 12kpl;10
+1;Eggs;12
+2;Bacon;9
+3;Spaghetti;5

@@ -9,16 +9,29 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ *
+ * @author Anttoni
+ */
 public class RavintolaUI {
 
     private List<User> users;
     private UsersInFile userReader;
 
+    /**
+     *
+     * @param userReader
+     * @throws IOException
+     */
     public RavintolaUI(UsersInFile userReader) throws IOException {
         this.userReader = userReader;
         userReader.readUsersFromFile();
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     public void login() throws Exception {
 
         Scanner s = new Scanner(System.in);
@@ -46,6 +59,11 @@ public class RavintolaUI {
 
     }
 
+    /**
+     *
+     * @param user
+     * @throws Exception
+     */
     public void welcome(User user) throws Exception {
         Scanner s = new Scanner(System.in);
         while (true) {
@@ -81,6 +99,11 @@ public class RavintolaUI {
 
     }
 
+    /**
+     *
+     * @param waiter
+     * @throws Exception
+     */
     public static void welcomeWaiter(Waiter waiter) throws Exception {
         while (true) {
             System.out.println("0 = to start");
@@ -97,6 +120,11 @@ public class RavintolaUI {
         }
     }
 
+    /**
+     *
+     * @param manager
+     * @throws IOException
+     */
     public void welcomeManager(Manager manager) throws IOException {
         while (true) {
 
@@ -119,17 +147,27 @@ public class RavintolaUI {
         }
     }
 
-    public static void welcomeChef(Chef chef) {
+    /**
+     *
+     * @param chef
+     * @throws IOException
+     */
+    public static void welcomeChef(Chef chef) throws IOException {
         while (true) {
             System.out.println("0 = to start");
             System.out.println("1 = print inventory");
+            System.out.println("2 = update inventory");
             String valinta = leiska.kysy();
+            ChefUI ui = new ChefUI(chef);
 
             if (valinta.equals("0")) {
                 break;
             }
             if (valinta.equals("1")) {
-                chef.printInventory();
+                ui.printInventory();
+            }
+            if (valinta.equals("2")) {
+                ui.updateInventory();
             }
         }
     }

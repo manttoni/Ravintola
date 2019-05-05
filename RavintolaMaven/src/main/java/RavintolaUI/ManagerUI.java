@@ -20,12 +20,20 @@ public class ManagerUI {
 
     private Manager manager;
 
+    /**
+     *
+     * @param manager
+     */
     public ManagerUI(Manager manager) {
         this.manager = manager;
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     public void manageWaiters() throws IOException {
-        
+
         while (true) {
             System.out.println("List of waiter users: ");
             for (Waiter w : manager.getWaiters()) {
@@ -46,6 +54,10 @@ public class ManagerUI {
         }
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     public void manageMenu() throws IOException {
         while (true) {
             System.out.println("0 = back");
@@ -59,7 +71,7 @@ public class ManagerUI {
                     this.manager.printMenu();
                     leiska.viiva();
                     System.out.println("0 = back");
-                    System.out.println("x = remove");
+                    System.out.println("x = remove (where x is the number of the order)");
                     int i = manager.getMenu().size() + 1;
                     System.out.println(i + " = add");
                     valinta = leiska.kysy();
@@ -75,6 +87,10 @@ public class ManagerUI {
         }
     }
 
+    /**
+     *
+     * @param i
+     */
     public void addToMenu(int i) {
         Scanner s = new Scanner(System.in);
         System.out.print("New menu item's name: ");

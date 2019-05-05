@@ -11,10 +11,16 @@ package domain;
  */
 public class Item {
 
-    private final int id;
+    private int id;
     private final String name;
-    private final int lkm;
+    private int lkm;
 
+    /**
+     *
+     * @param id
+     * @param name
+     * @param lkm
+     */
     public Item(int id, String name, int lkm) {
         this.id = id;
         this.name = name;
@@ -24,6 +30,26 @@ public class Item {
     @Override
     public String toString() {
         return "ID: " + this.id + " | name: " + this.name + " | amount: " + this.lkm;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setLkm(int lkm) {
+        this.lkm = lkm;
+    }
+
+    public int getLkm() {
+        return this.lkm;
+    }
+
+    public void setID(int id) {
+        this.id = id;
+    }
+
+    public int getID() {
+        return this.id;
     }
 
 }

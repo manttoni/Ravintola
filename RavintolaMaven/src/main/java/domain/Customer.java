@@ -18,15 +18,28 @@ public class Customer {
     private int tableID;
     private List<Order> orders; //lista ordereista joita ei ole vielä maksettu
 
+    /**
+     *
+     * @param id
+     */
     public Customer(int id) {
         this.id = id;
         this.orders = new ArrayList<>();
     }
 
+    /**
+     * lisää asiakkaalle tilauksen
+     *
+     * @param o
+     */
     public void addOrder(Order o) {
         this.orders.add(o);
     }
 
+    /**
+     *
+     * @param id
+     */
     public Customer(Integer id) {
         this.id = id;
     }
@@ -45,6 +58,11 @@ public class Customer {
         System.out.println("Total: " + this.totalSum() + "e");
     }
 
+    /**
+     * palauttaa asiakkaan tilausten hinnan
+     *
+     * @return
+     */
     public int totalSum() {
         int sum = 0;
         for (Order o : this.orders) {
@@ -57,6 +75,9 @@ public class Customer {
         return this.orders;
     }
 
+    /**
+     * asiakas maksaa
+     */
     public void checkOut() {
         this.orders = new ArrayList<>();
     }

@@ -8,6 +8,8 @@ package dao;
 import domain.Item;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -23,6 +25,16 @@ public class InventoryInFile {
 
     public InventoryInFile() {
         this.inventory = new ArrayList<>();
+    }
+
+    public void writeInventoryToFile() throws IOException {
+        FileWriter fw = new FileWriter(file);
+
+        for (Item i : this.inventory) {
+            fw.write(i.getID() + ";" + i.getName() + ";" + i.getLkm() + "\n");
+        }
+
+        fw.close();
     }
 
     public void readItemsFromFile() throws FileNotFoundException {

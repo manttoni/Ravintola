@@ -17,6 +17,12 @@ public class Manager extends User {
 
     private UsersInFile userReader;
 
+    /**
+     *
+     * @param name
+     * @param password
+     * @throws IOException
+     */
     public Manager(String name, String password) throws IOException {
         super(name, password, "manager");
     }
@@ -55,6 +61,11 @@ public class Manager extends User {
         return super.orderReader.getOrders();
     }
 
+    /**
+     * järjestää ID:n mukaan
+     *
+     * @param l
+     */
     public void remakeID(List<Order> l) {
         for (int i = 0; i < l.size(); i++) {
             l.get(i).setID(i + 1);

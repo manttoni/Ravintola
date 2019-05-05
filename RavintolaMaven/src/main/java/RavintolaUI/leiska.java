@@ -13,10 +13,17 @@ import java.util.Scanner;
  */
 public class leiska {
 
+    /**
+     *
+     */
     public static void viiva() {
         System.out.println("-----------------");
     }
 
+    /**
+     *
+     * @return
+     */
     public static String kysy() {
         viiva();
         System.out.print("Select: ");

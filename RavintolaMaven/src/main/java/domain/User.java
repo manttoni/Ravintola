@@ -21,8 +21,11 @@ public class User {
     private final String name;
     private String password;
     private String status = "?";
+
     protected final TablesInFile tableReader;
+
     protected final OrdersInFile orderReader;
+
     protected UsersInFile userReader;
 
     public User(String name, String password, String status) throws IOException {
@@ -38,8 +41,8 @@ public class User {
 
         this.userReader = new UsersInFile();
     }
-    
-    public void setUsersInFileForTest(UsersInFile userfile){
+
+    public void setUsersInFileForTest(UsersInFile userfile) {
         this.userReader = userfile;
     }
 
