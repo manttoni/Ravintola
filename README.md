@@ -13,6 +13,7 @@ Dokumentointi
 - [Vaatimusmäärittely](https://github.com/manttoni/ot-harjoitustyo/blob/master/dokumentointi/Maarittelydokumentti.md)
 - [Työtuntikirjanpito](https://github.com/manttoni/ot-harjoitustyo/blob/master/dokumentointi/ty%C3%B6tuntikirjanpito.txt)
 - [Arkkitehtuuri](https://github.com/manttoni/ot-harjoitustyo/blob/master/dokumentointi/arkkitehtuuri.md)
+- [Käyttöohjeet](https://github.com/manttoni/Ravintola/blob/master/dokumentointi/k%C3%A4ytt%C3%B6ohjeet)
 
 Ohjelman käyttöohjeet:
 
